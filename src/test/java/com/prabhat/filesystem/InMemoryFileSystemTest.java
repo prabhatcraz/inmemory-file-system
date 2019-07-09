@@ -231,5 +231,5 @@ public class InMemoryFileSystemTest {
         assertFalse(c.isDirectory());
     }
 
-    
+
 }
