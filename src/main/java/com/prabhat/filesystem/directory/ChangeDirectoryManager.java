@@ -1,6 +1,7 @@
 package com.prabhat.filesystem.directory;
 
 import com.prabhat.filesystem.File;
+import com.prabhat.filesystem.exceptions.BadPathException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +42,7 @@ public class ChangeDirectoryManager {
 
         for(String p : paths) {
             f = f.getChildren().get(p);
-            if(f == null || !f.isDirectory()) throw new RuntimeException("Wrong path specified.");
+            if(f == null || !f.isDirectory()) throw new BadPathException("Wrong path specified.");
             globalFileManager.setCurrentDir(f);
         }
         return path;

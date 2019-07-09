@@ -48,15 +48,7 @@ public class InMemoryFileSystem implements FileSystem {
 
     @Override
     public boolean mkdir(String path) {
-        try {
-            directoryManager.create(path, true);
-        } catch (RuntimeException ex) {
-            // Ideally we should not swallow exception but if the interface expects a boolean response
-            // we need to return a value. Printing stack trace would at least give a chance to debug.
-            ex.printStackTrace();
-            return false;
-        }
-        return true;
+        return directoryManager.create(path);
     }
 
     @Override

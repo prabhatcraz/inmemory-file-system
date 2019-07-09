@@ -13,9 +13,8 @@ public class DirectoryManager {
 
     /**
      * @param path      path of the file.
-     * @param recursive similar to -p parameter or linux.
      */
-    public boolean create(final String path, final boolean recursive) {
+    public boolean create(final String path) {
         // We need to check if the starting point is root or currentDir.
         File currentFile;
         final String[] paths;

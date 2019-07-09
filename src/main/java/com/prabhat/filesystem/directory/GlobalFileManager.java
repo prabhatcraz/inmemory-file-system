@@ -23,7 +23,7 @@ public class GlobalFileManager {
       this.root = file;
       return;
     } else {
-      throw new RuntimeException("Attempt to re-write the root directory!!");
+      throw new UnsupportedOperationException("Attempt to re-write the root directory!!");
     }
   }
 }
