@@ -1,6 +1,8 @@
 package com.prabhat.filesystem;
 
 
+import com.prabhat.filesystem.directory.GlobalFileManager;
+import com.prabhat.filesystem.manipulation.FileDeleter;
 import org.junit.Before;
 import org.junit.Test;
 

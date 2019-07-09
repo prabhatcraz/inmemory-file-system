@@ -1,5 +1,7 @@
-package com.prabhat.filesystem;
+package com.prabhat.filesystem.manipulation;
 
+import com.prabhat.filesystem.File;
+import com.prabhat.filesystem.directory.GlobalFileManager;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

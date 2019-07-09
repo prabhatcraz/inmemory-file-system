@@ -1,5 +1,6 @@
-package com.prabhat.filesystem;
+package com.prabhat.filesystem.directory;
 
+import com.prabhat.filesystem.File;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;

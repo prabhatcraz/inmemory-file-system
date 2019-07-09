@@ -1,5 +1,7 @@
 package com.prabhat.filesystem;
 
+import com.prabhat.filesystem.directory.DirectoryManager;
+import com.prabhat.filesystem.directory.GlobalFileManager;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -7,26 +9,6 @@ import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 
 public class DirectoryManagerTest {
-    @Test
-    public void testFindingFile() {
-        // GIVEN
-        final File root = File.builder().name("/").children(new HashMap<>()).isDirectory(true).build();
-        final GlobalFileManager globalfileManager = new GlobalFileManager();
-        globalfileManager.setRootFile(root);
-
-        final File child1 = File.builder().name("child1").parent(root).children(new HashMap<>()).isDirectory(true).build();
-        final File child2 = File.builder().name("child2").parent(root).children(new HashMap<>()).isDirectory(true).build();
-
-        root.getChildren().put("child1", child1);
-        root.getChildren().put("child2", child2);
-
-        final DirectoryManager directoryManager = new DirectoryManager(globalfileManager);
-        // WHEN
-
-        final File file = directoryManager.toFile("/child1");
-        // THEN
-        assertEquals("child1", file.getName());
-    }
 
     @Test
     public void testCreatingFilesWithRootAsStartingPoint() {

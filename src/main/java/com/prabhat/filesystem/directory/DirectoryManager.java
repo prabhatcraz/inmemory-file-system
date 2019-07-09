@@ -1,5 +1,6 @@
-package com.prabhat.filesystem;
+package com.prabhat.filesystem.directory;
 
+import com.prabhat.filesystem.File;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -47,27 +48,5 @@ public class DirectoryManager {
         }
 
         return true;
-    }
-
-    public boolean remove(String path, boolean recursive) {
-        return true;
-    }
-
-
-    File toFile(final String absolutePath) {
-        if (!absolutePath.startsWith("/")) throw new RuntimeException("Bad path, should start with '/'");
-
-        // removing the initial character.
-        String[] paths = absolutePath.substring(1).split("/");
-
-        File file = globalfileManager.getRoot();
-
-        for (String path : paths) {
-            file = file.getChildren().get(path);
-            if (file == null)
-                throw new FileNotFoundException(String.format("%s in the path is not a file or folder.", path));
-        }
-
-        return file;
     }
 }

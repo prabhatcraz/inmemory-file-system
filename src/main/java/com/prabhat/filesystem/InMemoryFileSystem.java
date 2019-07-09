@@ -1,5 +1,10 @@
 package com.prabhat.filesystem;
 
+import com.prabhat.filesystem.directory.ChangeDirectoryManager;
+import com.prabhat.filesystem.directory.DirectoryManager;
+import com.prabhat.filesystem.directory.GlobalFileManager;
+import com.prabhat.filesystem.manipulation.FileCreator;
+import com.prabhat.filesystem.manipulation.FileDeleter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -25,6 +30,7 @@ public class InMemoryFileSystem implements FileSystem {
         this.fileCreator = fileCreator;
         this.fileDeleter = fileDeleter;
 
+        // Initialize the root folder.
         final File root = File.builder().name("/").children(new HashMap<>()).isDirectory(true).build();
         globalFileManager.setRootFile(root);
         globalFileManager.setCurrentDir(root);
@@ -35,7 +41,7 @@ public class InMemoryFileSystem implements FileSystem {
     public Iterable<String> ls() {
         final List<String> s = new ArrayList<>(globalFileManager.getCurrentDir().getChildren().keySet());
         s.add("."); // add current directory
-        s.add(".."); // add parent directoryls
+        s.add(".."); // add parent directory
 
         return s;
     }
@@ -43,7 +49,6 @@ public class InMemoryFileSystem implements FileSystem {
     @Override
     public boolean mkdir(String path) {
         try {
-            // TODO: lets revisit this and make it false.
             directoryManager.create(path, true);
         } catch (RuntimeException ex) {
             // Ideally we should not swallow exception but if the interface expects a boolean response
