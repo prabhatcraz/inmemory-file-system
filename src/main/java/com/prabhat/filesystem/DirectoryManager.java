@@ -31,14 +31,14 @@ public class DirectoryManager {
         for (String p : paths) {
 
             if (createFiles) { // b signifies we have to create files now.
-                File file = new File(p, currentFile, new HashMap<>(), true);
+                final File file = File.builder().name(p).parent(currentFile).children(new HashMap<>()).isDirectory(true).build();
                 currentFile.getChildren().put(p, file);
                 currentFile = file;
             } else {
                 if (currentFile.getChildren().get(p) != null) {
                     currentFile = currentFile.getChildren().get(p);
                 } else {
-                    File file = new File(p, currentFile, new HashMap<>(), true);
+                    final File file = File.builder().name(p).parent(currentFile).children(new HashMap<>()).isDirectory(true).build();
                     currentFile.getChildren().put(p, file);
                     currentFile = file;
                     createFiles = true;

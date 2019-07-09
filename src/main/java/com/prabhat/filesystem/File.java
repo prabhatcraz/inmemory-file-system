@@ -1,15 +1,15 @@
 package com.prabhat.filesystem;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 import java.util.Map;
 
-@Data
 @Builder
+@Getter
 public class File {
-  String name;
-  File parent;
-  Map<String, File> children;
-  boolean isDirectory;
+  private String name;
+  private File parent;
+  private Map<String, File> children;
+  private boolean isDirectory;
 }

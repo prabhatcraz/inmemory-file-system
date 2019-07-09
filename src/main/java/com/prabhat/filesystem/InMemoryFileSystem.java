@@ -25,7 +25,7 @@ public class InMemoryFileSystem implements FileSystem {
         this.fileCreator = fileCreator;
         this.fileDeleter = fileDeleter;
 
-        final File root = new File("/", null, new HashMap<>(), true);
+        final File root = File.builder().name("/").children(new HashMap<>()).isDirectory(true).build();
         globalFileManager.setRootFile(root);
         globalFileManager.setCurrentDir(root);
     }

@@ -10,12 +10,13 @@ public class DirectoryManagerTest {
     @Test
     public void testFindingFile() {
         // GIVEN
-        final File root = new File("/", null, new HashMap<>(), true);
+        final File root = File.builder().name("/").children(new HashMap<>()).isDirectory(true).build();
         final GlobalFileManager globalfileManager = new GlobalFileManager();
         globalfileManager.setRootFile(root);
 
-        final File child1 = new File("child1", root, new HashMap<>(), true);
-        final File child2 = new File("child1", root, new HashMap<>(), true);
+        final File child1 = File.builder().name("child1").parent(root).children(new HashMap<>()).isDirectory(true).build();
+        final File child2 = File.builder().name("child2").parent(root).children(new HashMap<>()).isDirectory(true).build();
+
         root.getChildren().put("child1", child1);
         root.getChildren().put("child2", child2);
 
@@ -30,7 +31,7 @@ public class DirectoryManagerTest {
     @Test
     public void testCreatingFilesWithRootAsStartingPoint() {
         // GIVEN
-        final File root = new File("/", null, new HashMap<>(), true);
+        final File root = File.builder().name("/").children(new HashMap<>()).isDirectory(true).build();
         final GlobalFileManager globalfileManager = new GlobalFileManager();
         globalfileManager.setRootFile(root);
 
@@ -51,10 +52,10 @@ public class DirectoryManagerTest {
     @Test
     public void testCreatingFilesWithNonRootAsStartingPoint() {
         // GIVEN
-        final File root = new File("/", null, new HashMap<>(), true);
+        final File root = File.builder().name("/").children(new HashMap<>()).isDirectory(true).build();
         final GlobalFileManager globalfileManager = new GlobalFileManager();
         globalfileManager.setRootFile(root);
-        final File file = new File("a", null, new HashMap<>(), true);
+        final File file = File.builder().name("a").children(new HashMap<>()).isDirectory(true).build();
         root.getChildren().put("a", file);
         globalfileManager.setCurrentDir(file);
 

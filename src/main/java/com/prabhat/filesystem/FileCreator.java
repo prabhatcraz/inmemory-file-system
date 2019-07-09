@@ -18,7 +18,7 @@ public class FileCreator {
             folderToCreateFile = findDirToCreateFile(path.substring(0, i));
             fileName = path.substring(i + 1);
         }
-        final File file = new File(fileName,folderToCreateFile, null, false);
+        final File file = File.builder().name(fileName).parent(folderToCreateFile).isDirectory(false).build();
         folderToCreateFile.getChildren().put(file.getName(), file);
         return fileName;
     }
